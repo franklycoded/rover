@@ -22,7 +22,23 @@ namespace Rover.API.Service
 
         public Position MoveBack()
         {
-            throw new NotImplementedException();
+            switch (_direction)
+            {
+                case EDirection.N:
+                    _y--;
+                    break;
+                case EDirection.E:
+                    _x--;
+                    break;
+                case EDirection.S:
+                    _y++;
+                    break;
+                case EDirection.W:
+                    _x++;
+                    break;
+            }
+
+            return GetPosition();
         }
 
         public Position MoveForward()
