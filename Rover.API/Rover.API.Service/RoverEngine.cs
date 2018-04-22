@@ -70,7 +70,7 @@ namespace Rover.API.Service
         {
             var rem = ((int)_direction - 1) % 4;
 
-            _direction = (EDirection)(rem < 0 ? rem + 4 : rem);
+            _direction = (EDirection)CalcMod((int)_direction - 1, 4);
 
             return GetPosition();
         }
