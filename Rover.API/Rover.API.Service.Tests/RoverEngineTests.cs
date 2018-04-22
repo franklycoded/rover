@@ -112,5 +112,101 @@ namespace Rover.API.Service.Tests
             Assert.AreEqual(1, newPosition.Y);
             Assert.AreEqual(EDirection.W, newPosition.Direction);
         }
+
+        [Test]
+        public void RoverEngine_TurnLeft_From11N_To11W()
+        {
+            var engine = new RoverEngine(1, 1, EDirection.N);
+
+            var newPosition = engine.TurnLeft();
+
+            Assert.AreEqual(1, newPosition.X);
+            Assert.AreEqual(1, newPosition.Y);
+            Assert.AreEqual(EDirection.W, newPosition.Direction);
+        }
+
+        [Test]
+        public void RoverEngine_TurnLeft_From11E_To11N()
+        {
+            var engine = new RoverEngine(1, 1, EDirection.E);
+
+            var newPosition = engine.TurnLeft();
+
+            Assert.AreEqual(1, newPosition.X);
+            Assert.AreEqual(1, newPosition.Y);
+            Assert.AreEqual(EDirection.N, newPosition.Direction);
+        }
+
+        [Test]
+        public void RoverEngine_TurnLeft_From11S_To11E()
+        {
+            var engine = new RoverEngine(1, 1, EDirection.S);
+
+            var newPosition = engine.TurnLeft();
+
+            Assert.AreEqual(1, newPosition.X);
+            Assert.AreEqual(1, newPosition.Y);
+            Assert.AreEqual(EDirection.E, newPosition.Direction);
+        }
+
+        [Test]
+        public void RoverEngine_TurnLeft_From11W_To11S()
+        {
+            var engine = new RoverEngine(1, 1, EDirection.W);
+
+            var newPosition = engine.TurnLeft();
+
+            Assert.AreEqual(1, newPosition.X);
+            Assert.AreEqual(1, newPosition.Y);
+            Assert.AreEqual(EDirection.S, newPosition.Direction);
+        }
+
+        [Test]
+        public void RoverEngine_TurnRight_From11N_To11E()
+        {
+            var engine = new RoverEngine(1, 1, EDirection.N);
+
+            var newPosition = engine.TurnRight();
+
+            Assert.AreEqual(1, newPosition.X);
+            Assert.AreEqual(1, newPosition.Y);
+            Assert.AreEqual(EDirection.E, newPosition.Direction);
+        }
+
+        [Test]
+        public void RoverEngine_TurnRight_From11E_To11S()
+        {
+            var engine = new RoverEngine(1, 1, EDirection.E);
+
+            var newPosition = engine.TurnRight();
+
+            Assert.AreEqual(1, newPosition.X);
+            Assert.AreEqual(1, newPosition.Y);
+            Assert.AreEqual(EDirection.S, newPosition.Direction);
+        }
+
+        [Test]
+        public void RoverEngine_TurnRight_From11S_To11W()
+        {
+            var engine = new RoverEngine(1, 1, EDirection.S);
+
+            var newPosition = engine.TurnRight();
+
+            Assert.AreEqual(1, newPosition.X);
+            Assert.AreEqual(1, newPosition.Y);
+            Assert.AreEqual(EDirection.W, newPosition.Direction);
+        }
+
+        [Test]
+        public void RoverEngine_TurnRight_From11W_To11N()
+        {
+            var engine = new RoverEngine(1, 1, EDirection.W);
+
+            var newPosition = engine.TurnRight();
+
+            Assert.AreEqual(1, newPosition.X);
+            Assert.AreEqual(1, newPosition.Y);
+            Assert.AreEqual(EDirection.N, newPosition.Direction);
+        }
     }
 }

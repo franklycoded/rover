@@ -61,5 +61,21 @@ namespace Rover.API.Service
 
             return GetPosition();
         }
+
+        public Position TurnLeft()
+        {
+            var mod = ((int)_direction - 1) % 4;
+
+            _direction = (EDirection)(mod < 0 ? mod + 4 : mod);
+
+            return GetPosition();
+        }
+
+        public Position TurnRight()
+        {
+            _direction = (EDirection)(((int)_direction + 1) % 4);
+
+            return GetPosition();
+        }
     }
 }

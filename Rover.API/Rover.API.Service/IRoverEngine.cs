@@ -5,5 +5,7 @@
         Position MoveForward();
         Position MoveBack();
         Position GetPosition();
+        Position TurnLeft();
+        Position TurnRight();
     }
 }
