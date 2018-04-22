@@ -11,3 +11,5 @@ The Rover's API is implemented in the Rover.API.Communication project's Antenna 
 To demonstrate familiarity with the concept of Separation of Concerns, the Rover's control functions (MoveForward, MoveBack, TurnLeft, TurnRight) are implemented in the RoverEngine class of the Rover.API.Service project.
 
 The two test projects include 53 Unit Tests alltogether, and guarantee coverage for normal and edge cases.
+
+The amount of comments was kept to the minimum due to the size of the project and the self-documenting nature of the codebase. A couple of lines were provided for functions with non-trivial calculations.
