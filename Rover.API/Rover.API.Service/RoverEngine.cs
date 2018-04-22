@@ -7,11 +7,15 @@ namespace Rover.API.Service
         private int _x;
         private int _y;
         private EDirection _direction;
+        private int _gridHeight;
+        private int _gridWidth;
 
-        public RoverEngine(int x, int y, EDirection direction)
+        public RoverEngine(int x, int y, EDirection direction, int gridHeight, int gridWidth)
         {
             _x = x;
             _y = y;
+            _gridHeight = gridHeight;
+            _gridWidth = gridWidth;
             _direction = direction;
         }
 
@@ -25,16 +29,16 @@ namespace Rover.API.Service
             switch (_direction)
             {
                 case EDirection.N:
-                    _y--;
+                    _y = CalcMod(_y - 1, _gridHeight);
                     break;
                 case EDirection.E:
-                    _x--;
+                    _x = CalcMod(_x - 1, _gridWidth);
                     break;
                 case EDirection.S:
-                    _y++;
+                    _y = CalcMod(_y + 1, _gridHeight);
                     break;
                 case EDirection.W:
-                    _x++;
+                    _x = CalcMod(_x + 1, _gridWidth);
                     break;
             }
 
@@ -46,16 +50,16 @@ namespace Rover.API.Service
             switch (_direction)
             {
                 case EDirection.N:
-                    _y++;
+                    _y = CalcMod(_y + 1, _gridHeight);
                     break;
                 case EDirection.E:
-                    _x++;
+                    _x = CalcMod(_x + 1, _gridWidth);
                     break;
                 case EDirection.S:
-                    _y--;
+                    _y = CalcMod(_y - 1, _gridHeight);
                     break;
                 case EDirection.W:
-                    _x--;
+                    _x = CalcMod(_x - 1, _gridWidth);
                     break;
             }
 
@@ -64,9 +68,9 @@ namespace Rover.API.Service
 
         public Position TurnLeft()
         {
-            var mod = ((int)_direction - 1) % 4;
+            var rem = ((int)_direction - 1) % 4;
 
-            _direction = (EDirection)(mod < 0 ? mod + 4 : mod);
+            _direction = (EDirection)(rem < 0 ? rem + 4 : rem);
 
             return GetPosition();
         }
@@ -76,6 +80,13 @@ namespace Rover.API.Service
             _direction = (EDirection)(((int)_direction + 1) % 4);
 
             return GetPosition();
+        }
+
+        private int CalcMod(int num, int mod)
+        {
+            var rem = num % mod;
+
+            return rem < 0 ? rem + mod : rem;
         }
     }
 }
