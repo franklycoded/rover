@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rover.API.Service", "Rover.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rover.API.Service.Tests", "Rover.API.Service.Tests\Rover.API.Service.Tests.csproj", "{4736D09E-81A8-47BF-82F4-D766ED76BBA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rover.API.Communication", "Rover.API.Communication\Rover.API.Communication.csproj", "{7CCA682E-5D53-4A14-9131-05C28704F16D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rover.API.Communication.Tests", "Rover.API.Communication.Tests\Rover.API.Communication.Tests.csproj", "{E7792B1D-EB5F-4097-81ED-642E9BD044A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{4736D09E-81A8-47BF-82F4-D766ED76BBA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4736D09E-81A8-47BF-82F4-D766ED76BBA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4736D09E-81A8-47BF-82F4-D766ED76BBA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CCA682E-5D53-4A14-9131-05C28704F16D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CCA682E-5D53-4A14-9131-05C28704F16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CCA682E-5D53-4A14-9131-05C28704F16D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CCA682E-5D53-4A14-9131-05C28704F16D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7792B1D-EB5F-4097-81ED-642E9BD044A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7792B1D-EB5F-4097-81ED-642E9BD044A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7792B1D-EB5F-4097-81ED-642E9BD044A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7792B1D-EB5F-4097-81ED-642E9BD044A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
