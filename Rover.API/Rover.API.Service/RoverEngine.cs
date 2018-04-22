@@ -9,14 +9,17 @@ namespace Rover.API.Service
         private EDirection _direction;
         private int _gridHeight;
         private int _gridWidth;
+        private IObstacleDetector _obstacleDetector;
 
-        public RoverEngine(int x, int y, EDirection direction, int gridHeight, int gridWidth)
+        public RoverEngine(int x, int y, EDirection direction, int gridHeight, int gridWidth, IObstacleDetector obstacleDetector)
         {
             _x = x;
             _y = y;
             _gridHeight = gridHeight;
             _gridWidth = gridWidth;
             _direction = direction;
+
+            _obstacleDetector = obstacleDetector ?? throw new ArgumentNullException(nameof(obstacleDetector));
         }
 
         public Position GetPosition()
@@ -24,64 +27,87 @@ namespace Rover.API.Service
             return new Position(_x, _y, _direction);
         }
 
-        public Position MoveBack()
+        public MoveResult MoveBack()
         {
+            int tempY = _y;
+            int tempX = _x;
+
             switch (_direction)
             {
                 case EDirection.N:
-                    _y = CalcMod(_y - 1, _gridHeight);
+                    tempY = CalcMod(_y - 1, _gridHeight);
                     break;
                 case EDirection.E:
-                    _x = CalcMod(_x - 1, _gridWidth);
+                    tempX = CalcMod(_x - 1, _gridWidth);
                     break;
                 case EDirection.S:
-                    _y = CalcMod(_y + 1, _gridHeight);
+                    tempY = CalcMod(_y + 1, _gridHeight);
                     break;
                 case EDirection.W:
-                    _x = CalcMod(_x + 1, _gridWidth);
+                    tempX = CalcMod(_x + 1, _gridWidth);
                     break;
             }
 
-            return GetPosition();
+            if (_obstacleDetector.CanMove(tempX, tempY))
+            {
+                _x = tempX;
+                _y = tempY;
+
+                return new MoveResult(GetPosition(), false);
+            }
+
+            return new MoveResult(GetPosition(), true);
         }
 
-        public Position MoveForward()
+        public MoveResult MoveForward()
         {
+            int tempY = _y;
+            int tempX = _x;
+
             switch (_direction)
             {
                 case EDirection.N:
-                    _y = CalcMod(_y + 1, _gridHeight);
+                    tempY = CalcMod(_y + 1, _gridHeight);
                     break;
                 case EDirection.E:
-                    _x = CalcMod(_x + 1, _gridWidth);
+                    tempX = CalcMod(_x + 1, _gridWidth);
                     break;
                 case EDirection.S:
-                    _y = CalcMod(_y - 1, _gridHeight);
+                    tempY = CalcMod(_y - 1, _gridHeight);
                     break;
                 case EDirection.W:
-                    _x = CalcMod(_x - 1, _gridWidth);
+                    tempX = CalcMod(_x - 1, _gridWidth);
                     break;
             }
 
-            return GetPosition();
+            if(_obstacleDetector.CanMove(tempX, tempY))
+            {
+                _x = tempX;
+                _y = tempY;
+
+                return new MoveResult(GetPosition(), false);
+            }
+
+            return new MoveResult(GetPosition(), true);
         }
 
-        public Position TurnLeft()
+        public MoveResult TurnLeft()
         {
             var rem = ((int)_direction - 1) % 4;
 
             _direction = (EDirection)CalcMod((int)_direction - 1, 4);
 
-            return GetPosition();
+            return new MoveResult(GetPosition(), false);
         }
 
-        public Position TurnRight()
+        public MoveResult TurnRight()
         {
             _direction = (EDirection)(((int)_direction + 1) % 4);
 
-            return GetPosition();
+            return new MoveResult(GetPosition(), false);
         }
 
+        // This helper function calculates mod with negative number support to implement wrapping in an elegant fashion
         private int CalcMod(int num, int mod)
         {
             var rem = num % mod;

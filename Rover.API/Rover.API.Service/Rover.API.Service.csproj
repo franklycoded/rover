@@ -41,7 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EDirection.cs" />
+    <Compile Include="IObstacleDetector.cs" />
     <Compile Include="IRoverEngine.cs" />
+    <Compile Include="MoveResult.cs" />
+    <Compile Include="ObstacleDetector.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoverEngine.cs" />

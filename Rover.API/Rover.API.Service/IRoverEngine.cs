@@ -2,10 +2,10 @@
 {
     public interface IRoverEngine
     {
-        Position MoveForward();
-        Position MoveBack();
+        MoveResult MoveForward();
+        MoveResult MoveBack();
         Position GetPosition();
-        Position TurnLeft();
-        Position TurnRight();
+        MoveResult TurnLeft();
+        MoveResult TurnRight();
     }
 }
